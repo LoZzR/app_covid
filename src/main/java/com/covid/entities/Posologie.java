@@ -2,12 +2,35 @@ package com.covid.entities;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity(name = "POSOLOGIE")
 public class Posologie {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "ID_POSOLOGIE")
 	private Integer idPosologie;
+	
+	@Column(name = "DATE_DEBUT")
 	private LocalDate dateDebut;
+	
+	@Column(name = "DATE_FIN")
 	private LocalDate dateFin;
+	
+	@Column(name = "NBR_PRISE_JOUR")
 	private Integer nbrPriseJour;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="ID_MEDOC")
+	private Medicament medicament;
 	
 	public Posologie() {
 		
