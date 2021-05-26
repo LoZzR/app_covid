@@ -1,17 +1,36 @@
 package com.covid.entities;
 
-public class Hopital {
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
+public class Hopital {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "ID_HOPITAL")
 	private Integer idHopital;
+	
+	@Column(name = "NOM_HOPITAL")
 	private String nomHopital;
+	
+	@Column(name = "VILLE")
 	private String ville;
+	
+	@OneToMany(mappedBy = "hopital", fetch=FetchType.LAZY)
+	private List<Room> rooms;
 	
 	public Hopital() {
 		
 	}
 
 	public Hopital(String nomHopital, String ville) {
-		super();
 		this.nomHopital = nomHopital;
 		this.ville = ville;
 	}
@@ -38,6 +57,14 @@ public class Hopital {
 
 	public void setVille(String ville) {
 		this.ville = ville;
+	}
+
+	public List<Room> getRooms() {
+		return rooms;
+	}
+
+	public void setRooms(List<Room> rooms) {
+		this.rooms = rooms;
 	}
 
 	@Override

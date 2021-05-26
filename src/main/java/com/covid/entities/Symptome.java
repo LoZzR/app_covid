@@ -1,8 +1,20 @@
 package com.covid.entities;
 
-public class Symptome {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class Symptome {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "ID_SYMPTOME")
 	private Integer idSymptome;
+	
+	@Column(name = "DESCRIPTION_SYMPTOME")
 	private String descriptionSympome;
 	
 	public Symptome() {
@@ -10,7 +22,6 @@ public class Symptome {
 	}
 
 	public Symptome(String descriptionSympome) {
-		super();
 		this.descriptionSympome = descriptionSympome;
 	}
 

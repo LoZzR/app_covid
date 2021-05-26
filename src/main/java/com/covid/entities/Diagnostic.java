@@ -1,22 +1,57 @@
 package com.covid.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Diagnostic {
-
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "ID_DIAGNOSTIC")
 	private Integer idDiagnostic;
+	
+	@Column(name = "DATE_CONTAMINATION")
 	private LocalDate dateContamination;
+	
+	@Column(name = "DATE_DIAGNOSTIC")
 	private LocalDate dateDiagnostic;
+	
+	@Column(name = "DATE_CLOTURE")
 	private LocalDate dateCloture;
+	
+	@Column(name = "ETAT_FINAL")
 	private boolean etatFinal;
 	
+	@OneToMany
+	@JoinColumn(name="ID_DIAGNOSTIC")
+	private List<Posologie> posoligies;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="ID_PATIENT")
+	private Patient patient;
+	
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(name="diagnostic_symptome", joinColumns=@JoinColumn(name="ID_DIAGNOSTIC"), inverseJoinColumns=@JoinColumn(name="ID_SYMPTOME"))
+	private List<Symptome> symptomes;
+	
 	public Diagnostic() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Diagnostic(LocalDate dateContamination, LocalDate dateDiagnostic, LocalDate dateCloture, boolean etatFinal) {
-		super();
 		this.dateContamination = dateContamination;
 		this.dateDiagnostic = dateDiagnostic;
 		this.dateCloture = dateCloture;
@@ -61,6 +96,30 @@ public class Diagnostic {
 
 	public void setEtatFinal(boolean etatFinal) {
 		this.etatFinal = etatFinal;
+	}
+
+	public List<Posologie> getPosoligies() {
+		return posoligies;
+	}
+
+	public void setPosoligies(List<Posologie> posoligies) {
+		this.posoligies = posoligies;
+	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+
+	public List<Symptome> getSymptomes() {
+		return symptomes;
+	}
+
+	public void setSymptomes(List<Symptome> symptomes) {
+		this.symptomes = symptomes;
 	}
 
 	@Override

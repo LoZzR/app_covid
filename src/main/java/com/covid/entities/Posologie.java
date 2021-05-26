@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity(name = "POSOLOGIE")
+@Entity
 public class Posologie {
 
 	@Id
@@ -37,7 +37,6 @@ public class Posologie {
 	}
 
 	public Posologie(LocalDate dateDebut, LocalDate dateFin, Integer nbrPriseJour) {
-		super();
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 		this.nbrPriseJour = nbrPriseJour;
@@ -73,6 +72,14 @@ public class Posologie {
 
 	public void setNbrPriseJour(Integer nbrPriseJour) {
 		this.nbrPriseJour = nbrPriseJour;
+	}
+
+	public Medicament getMedicament() {
+		return medicament;
+	}
+
+	public void setMedicament(Medicament medicament) {
+		this.medicament = medicament;
 	}
 
 	@Override
