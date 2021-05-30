@@ -27,7 +27,7 @@ public class SejourHospitalier {
 	@Column(name = "FIN_SEJOUR")
 	private LocalDate finSejour;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="ID_ROOM")
 	private Room room;
 	

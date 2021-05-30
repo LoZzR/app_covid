@@ -1,5 +1,6 @@
 package com.covid.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,7 +24,7 @@ public class Room {
 	@Column(name = "ETAT")
 	private String etat;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="ID_HOPITAL")
 	private Hopital hopital;
 	

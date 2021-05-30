@@ -3,6 +3,7 @@ package com.covid.entities;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -39,7 +40,7 @@ public class Diagnostic {
 	@JoinColumn(name="ID_DIAGNOSTIC")
 	private List<Posologie> posoligies;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="ID_PATIENT")
 	private Patient patient;
 	
