@@ -59,4 +59,9 @@ public interface HopitalService {
 	public List <Hopital> findHopitalByVille(String nameHopital);
 	public List<Patient> getAllPatientBySexe(String sexe);
 	public List<Patient> getAllPatientByVille(String ville);
+	public List<Patient> getAllPatientBySexeAndVille(String sexe, String ville);
+	public List<Patient> getAllPatientByEtatFinal(boolean etatFinal);
+	public List<Patient> getAllPatientByEtatAndSexe(boolean etatFinal, String sexe);
+	public List<Patient> getAllPatientByEtatAndVille(boolean etatFinal, String ville);
+	public List<Patient> getAllPatientByEtatAndSexeAndVille(boolean etatFinal, String sexe, String ville);
 }

@@ -30,16 +30,21 @@ public class AppCovidApplication {
 	public void init() {
 		System.out.println("############################################ DEBUT ############################################");
 	
+		//Example of statistics by sex, we can do the same for city and for both
 		List<Patient> menPatients = this.hopitalService.getAllPatientBySexe("M");
 		List<Patient> womenPatients = this.hopitalService.getAllPatientBySexe("F");
 		List<Patient> patients = this.hopitalService.getAllPatient();
 		
-		int menPourCent = menPatients.size()/patients.size() * 100;
-		int womenPourCent = womenPatients.size()/patients.size() * 100;
+		int menPourCent = (int)((double)menPatients.size()/patients.size() * 100);
+		int womenPourCent = (int)((double)womenPatients.size()/patients.size() * 100);
 		
-		System.out.println("##########################################Pourcentage des hommes : ################" + menPourCent);
+		System.out.println("##########################################Pourcentage des hommes : ################" + menPourCent + "%");
 		
-		System.out.println("##########################################Pourcentage des femmes : ################" + womenPourCent);
+		System.out.println("##########################################Pourcentage des femmes : ################" + womenPourCent+ "%");
+		
+		//Get patient by state, see HopitalService for other methods
+		List<Patient> survivors = this.hopitalService.getAllPatientByEtatFinal(true);
+		List<Patient> deads = this.hopitalService.getAllPatientByEtatFinal(false);
 		
 		System.out.println("############################################ FIN ############################################");
 	}

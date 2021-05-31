@@ -15,4 +15,7 @@ public interface PatientRepository extends JpaRepository<Patient, Integer>{
 
 	@Query("select p from Patient p where p.adresse like CONCAT('%',:ville,'%')")
 	List<Patient> getPatientByVille(@Param("ville")String ville);
+
+	@Query("select p from Patient p where p.sexe =:sexe and p.adresse like CONCAT('%',:ville,'%')")
+	List<Patient> getPatientBySexeAndVille(@Param("sexe")String sexe, @Param("ville")String ville);
 }

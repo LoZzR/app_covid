@@ -234,4 +234,29 @@ public class HopitalServiceImpl implements HopitalService{
 		return this.patientRepo.getPatientByVille(ville);
 	}
 
+	@Override
+	public List<Patient> getAllPatientBySexeAndVille(String sexe, String ville) {
+		return this.patientRepo.getPatientBySexeAndVille(sexe, ville);
+	}
+
+	@Override
+	public List<Patient> getAllPatientByEtatFinal(boolean etatFinal) {
+		return this.diagnosticRepo.getPatientByEtatFinal(etatFinal);
+	}
+
+	@Override
+	public List<Patient> getAllPatientByEtatAndSexe(boolean etatFinal, String sexe) {
+		return this.diagnosticRepo.getPatientByEtatAndSexe(etatFinal, sexe);
+	}
+
+	@Override
+	public List<Patient> getAllPatientByEtatAndVille(boolean etatFinal, String ville) {
+		return this.diagnosticRepo.getPatientByEtatAndVille(etatFinal, ville);
+	}
+
+	@Override
+	public List<Patient> getAllPatientByEtatAndSexeAndVille(boolean etatFinal, String sexe, String ville) {
+		return this.diagnosticRepo.getPatientByEtatAndSexeAndVille(etatFinal, sexe, ville);
+	}
+
 }
