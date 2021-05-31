@@ -30,6 +30,9 @@ public class Patient {
 	
 	@Column(name = "PRENOM")
 	private String prenom;
+
+	@Column(name = "SEXE")
+	private String sexe;
 	
 	@Column(name = "TEL")
 	private String tel;
@@ -50,6 +53,17 @@ public class Patient {
 		this.dateNaissance = dateNaissance;
 		this.nom = nom;
 		this.prenom = prenom;
+		this.tel = tel;
+		this.adresse = adresse;
+	}
+
+	public Patient(String cin, LocalDate dateNaissance, String nom, String prenom, String sexe, String tel,
+			String adresse) {
+		this.cin = cin;
+		this.dateNaissance = dateNaissance;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.sexe = sexe;
 		this.tel = tel;
 		this.adresse = adresse;
 	}
@@ -94,6 +108,14 @@ public class Patient {
 		this.prenom = prenom;
 	}
 
+	public String getSexe() {
+		return sexe;
+	}
+
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
+	}
+
 	public String getTel() {
 		return tel;
 	}
@@ -121,7 +143,7 @@ public class Patient {
 	@Override
 	public String toString() {
 		return "Patient [idPatient=" + idPatient + ", cin=" + cin + ", dateNaissance=" + dateNaissance + ", nom=" + nom
-				+ ", prenom=" + prenom + ", tel=" + tel + ", adresse=" + adresse + "]";
+				+ ", prenom=" + prenom + ", sexe=" + sexe + ", tel=" + tel + ", adresse=" + adresse + "]";
 	}
 	
 }

@@ -57,4 +57,6 @@ public interface HopitalService {
 	public List<SejourHospitalier> getSejourByVille(String ville);
 	public List<SejourHospitalier> getSejourByNameHopital(String nomHopital);
 	public List <Hopital> findHopitalByVille(String nameHopital);
+	public List<Patient> getAllPatientBySexe(String sexe);
+	public List<Patient> getAllPatientByVille(String ville);
 }

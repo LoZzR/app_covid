@@ -224,4 +224,14 @@ public class HopitalServiceImpl implements HopitalService{
 		return this.hopitalRepo.getHopitalByName(nameHopital);
 	}
 
+	@Override
+	public List<Patient> getAllPatientBySexe(String sexe) {
+		return this.patientRepo.getPatientBySexe(sexe);
+	}
+
+	@Override
+	public List<Patient> getAllPatientByVille(String ville) {
+		return this.patientRepo.getPatientByVille(ville);
+	}
+
 }

@@ -2,6 +2,7 @@ package com.covid;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -29,6 +30,16 @@ public class AppCovidApplication {
 	public void init() {
 		System.out.println("############################################ DEBUT ############################################");
 	
+		List<Patient> menPatients = this.hopitalService.getAllPatientBySexe("M");
+		List<Patient> womenPatients = this.hopitalService.getAllPatientBySexe("F");
+		List<Patient> patients = this.hopitalService.getAllPatient();
+		
+		int menPourCent = menPatients.size()/patients.size() * 100;
+		int womenPourCent = womenPatients.size()/patients.size() * 100;
+		
+		System.out.println("##########################################Pourcentage des hommes : ################" + menPourCent);
+		
+		System.out.println("##########################################Pourcentage des femmes : ################" + womenPourCent);
 		
 		System.out.println("############################################ FIN ############################################");
 	}
