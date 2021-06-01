@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Room {
 
@@ -24,6 +26,7 @@ public class Room {
 	@Column(name = "ETAT")
 	private String etat;
 	
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="ID_HOPITAL")
 	private Hopital hopital;

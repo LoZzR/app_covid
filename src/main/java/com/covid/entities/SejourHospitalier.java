@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class SejourHospitalier {
 
@@ -27,10 +29,12 @@ public class SejourHospitalier {
 	@Column(name = "FIN_SEJOUR")
 	private LocalDate finSejour;
 	
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="ID_ROOM")
 	private Room room;
 	
+	@JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_DIAGNOSTIC")
     private Diagnostic diagnostic;

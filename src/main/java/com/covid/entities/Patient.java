@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Patient {
 
@@ -40,6 +42,7 @@ public class Patient {
 	@Column(name = "ADRESSE")
 	private String adresse;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "patient", fetch=FetchType.LAZY)
 	private List<Diagnostic> diagnostics;
 	

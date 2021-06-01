@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Posologie {
 
@@ -28,6 +30,7 @@ public class Posologie {
 	@Column(name = "NBR_PRISE_JOUR")
 	private Integer nbrPriseJour;
 	
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="ID_MEDOC")
 	private Medicament medicament;

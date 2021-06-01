@@ -16,6 +16,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Diagnostic {
 	
@@ -36,14 +38,17 @@ public class Diagnostic {
 	@Column(name = "ETAT_FINAL")
 	private boolean etatFinal;
 	
+	@JsonIgnore
 	@OneToMany
 	@JoinColumn(name="ID_DIAGNOSTIC")
 	private List<Posologie> posoligies;
 	
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="ID_PATIENT")
 	private Patient patient;
 	
+	@JsonIgnore
 	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(name="diagnostic_symptome", joinColumns=@JoinColumn(name="ID_DIAGNOSTIC"), inverseJoinColumns=@JoinColumn(name="ID_SYMPTOME"))
 	private List<Symptome> symptomes;

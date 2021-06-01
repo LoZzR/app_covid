@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Hopital {
 	@Id
@@ -23,6 +25,7 @@ public class Hopital {
 	@Column(name = "VILLE")
 	private String ville;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "hopital", fetch=FetchType.LAZY)
 	private List<Room> rooms;
 	
