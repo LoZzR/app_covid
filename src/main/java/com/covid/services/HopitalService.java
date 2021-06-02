@@ -19,6 +19,7 @@ public interface HopitalService {
 	public List<Hopital> getAllHopital();
 	public List<Room> getAllRoom();
 	public List<SejourHospitalier> getAllSejourHospitalier();
+	public List<SejourHospitalier> getSejourByNameHopitalAndVille(String nomHopital, String ville);
 	
 	public Hopital getHopital(Integer id);
 	public Room getRoom(Integer id);

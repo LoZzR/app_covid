@@ -96,6 +96,11 @@ public class HopitalServiceImpl implements HopitalService{
 	}
 
 	@Override
+	public List<SejourHospitalier> getSejourByNameHopitalAndVille(String nomHopital, String ville) {
+		return this.sejourHospitalierRepo.getSejourByNameHopital(nomHopital,ville);
+	}
+
+	@Override
 	public List<Hopital> findHopitalByVille(String nameHopital) {
 		return this.hopitalRepo.getHopitalByName(nameHopital);
 	}
