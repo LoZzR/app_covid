@@ -21,7 +21,7 @@ public class HopitalController {
 	@Autowired
 	private HopitalService hopitalService;
 	
-	@GetMapping("/sejour")
+	@GetMapping("/sejours")
 	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	public List<SejourHospitalier> getAllSejour(@RequestParam(value = "nomHopital", required = false) String nomHopital,
 			@RequestParam(value = "ville", required = false) String ville){
