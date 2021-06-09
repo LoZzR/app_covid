@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.covid.entities.SejourHospitalier;
 import com.covid.services.HopitalService;
+import com.covid.services.dto.SejourDTO;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -23,12 +23,10 @@ public class HopitalController {
 	
 	@GetMapping("/sejours")
 	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-	public List<SejourHospitalier> getAllSejour(@RequestParam(value = "nomHopital", required = false) String nomHopital,
+	public List<SejourDTO> getAllSejour(@RequestParam(value = "nomHopital", required = false) String nomHopital,
 			@RequestParam(value = "ville", required = false) String ville){
 		
 		if(nomHopital == null & ville == null) return this.hopitalService.getAllSejourHospitalier();
-		else if(nomHopital == null) return this.hopitalService.getSejourByVille(ville);
-		else if (ville == null) return this.hopitalService.getSejourByNameHopital(nomHopital);
-		else return this.hopitalService.getSejourByNameHopitalAndVille(nomHopital,ville);
+		throw new RuntimeException("Not Yet implemented !");
 	}
 }

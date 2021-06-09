@@ -1,5 +1,6 @@
 package com.covid.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import com.covid.entities.SejourHospitalier;
 import com.covid.repositories.HopitalRepository;
 import com.covid.repositories.RoomRepository;
 import com.covid.repositories.SejourHospitalierRepository;
+import com.covid.services.dto.SejourDTO;
 
 @Service
 public class HopitalServiceImpl implements HopitalService{
@@ -66,8 +68,17 @@ public class HopitalServiceImpl implements HopitalService{
 	}
 
 	@Override
-	public List<SejourHospitalier> getAllSejourHospitalier() {
-		return this.sejourHospitalierRepo.findAll();
+	public List<SejourDTO> getAllSejourHospitalier() {
+		List<SejourDTO> sejours = new ArrayList<>();
+		this.sejourHospitalierRepo.findAll().stream().forEach(s->sejours.add(new SejourDTO(1, 
+				s.getDiagnostic().getPatient().getPrenom(), 
+				s.getDiagnostic().getPatient().getNom(),
+				s.getDiagnostic().getPatient().getCin(), 
+				s.getRoom().getHopital().getNomHopital(), 
+				s.getRoom().getIdRoom(), 
+				s.getDebutSejour(), 
+				s.getFinSejour())));
+		return sejours;
 	}
 
 	@Override

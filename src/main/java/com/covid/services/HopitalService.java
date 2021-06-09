@@ -5,6 +5,7 @@ import java.util.List;
 import com.covid.entities.Hopital;
 import com.covid.entities.Room;
 import com.covid.entities.SejourHospitalier;
+import com.covid.services.dto.SejourDTO;
 
 public interface HopitalService {
 
@@ -18,7 +19,7 @@ public interface HopitalService {
 	
 	public List<Hopital> getAllHopital();
 	public List<Room> getAllRoom();
-	public List<SejourHospitalier> getAllSejourHospitalier();
+	public List<SejourDTO> getAllSejourHospitalier();
 	public List<SejourHospitalier> getSejourByNameHopitalAndVille(String nomHopital, String ville);
 	
 	public Hopital getHopital(Integer id);
