@@ -69,16 +69,7 @@ public class HopitalServiceImpl implements HopitalService{
 
 	@Override
 	public List<SejourDTO> getAllSejourHospitalier() {
-		List<SejourDTO> sejours = new ArrayList<>();
-		this.sejourHospitalierRepo.findAll().stream().forEach(s->sejours.add(new SejourDTO(1, 
-				s.getDiagnostic().getPatient().getPrenom(), 
-				s.getDiagnostic().getPatient().getNom(),
-				s.getDiagnostic().getPatient().getCin(), 
-				s.getRoom().getHopital().getNomHopital(), 
-				s.getRoom().getIdRoom(), 
-				s.getDebutSejour(), 
-				s.getFinSejour())));
-		return sejours;
+		return this.sejoursToSejoursDto(this.sejourHospitalierRepo.findAll());
 	}
 
 	@Override
@@ -97,23 +88,36 @@ public class HopitalServiceImpl implements HopitalService{
 	}
 
 	@Override
-	public List<SejourHospitalier> getSejourByVille(String ville) {
-		return this.sejourHospitalierRepo.getSejourByVille(ville);
+	public List<SejourDTO> getSejourByVille(String ville) {
+		return this.sejoursToSejoursDto(this.sejourHospitalierRepo.getSejourByVille(ville));
 	}
 
 	@Override
-	public List<SejourHospitalier> getSejourByNameHopital(String nomHopital) {
-		return this.sejourHospitalierRepo.getSejourByNameHopital(nomHopital);
+	public List<SejourDTO> getSejourByNameHopital(String nomHopital) {
+		return this.sejoursToSejoursDto(this.sejourHospitalierRepo.getSejourByNameHopital(nomHopital));
 	}
 
 	@Override
-	public List<SejourHospitalier> getSejourByNameHopitalAndVille(String nomHopital, String ville) {
-		return this.sejourHospitalierRepo.getSejourByNameHopital(nomHopital,ville);
+	public List<SejourDTO> getSejourByNameHopitalAndVille(String nomHopital, String ville) {
+		return this.sejoursToSejoursDto(this.sejourHospitalierRepo.getSejourByNameHopital(nomHopital,ville));
 	}
 
 	@Override
 	public List<Hopital> findHopitalByVille(String nameHopital) {
 		return this.hopitalRepo.getHopitalByName(nameHopital);
+	}
+	
+	private List<SejourDTO> sejoursToSejoursDto(List<SejourHospitalier> sejours){
+		List<SejourDTO> sejoursDTO = new ArrayList<>();
+		sejours.stream().forEach(s->sejoursDTO.add(new SejourDTO(1, 
+				s.getDiagnostic().getPatient().getPrenom(), 
+				s.getDiagnostic().getPatient().getNom(),
+				s.getDiagnostic().getPatient().getCin(), 
+				s.getRoom().getHopital().getNomHopital(), 
+				s.getRoom().getIdRoom(), 
+				s.getDebutSejour(), 
+				s.getFinSejour())));
+		return sejoursDTO;
 	}
 
 }

@@ -20,13 +20,13 @@ public interface HopitalService {
 	public List<Hopital> getAllHopital();
 	public List<Room> getAllRoom();
 	public List<SejourDTO> getAllSejourHospitalier();
-	public List<SejourHospitalier> getSejourByNameHopitalAndVille(String nomHopital, String ville);
+	public List<SejourDTO> getSejourByNameHopitalAndVille(String nomHopital, String ville);
 	
 	public Hopital getHopital(Integer id);
 	public Room getRoom(Integer id);
 	public SejourHospitalier getSejourHospitalier(Integer id);
 	
-	public List<SejourHospitalier> getSejourByVille(String ville);
-	public List<SejourHospitalier> getSejourByNameHopital(String nomHopital);
+	public List<SejourDTO> getSejourByVille(String ville);
+	public List<SejourDTO> getSejourByNameHopital(String nomHopital);
 	public List <Hopital> findHopitalByVille(String nameHopital);
 }

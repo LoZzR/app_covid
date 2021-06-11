@@ -27,6 +27,8 @@ public class HopitalController {
 			@RequestParam(value = "ville", required = false) String ville){
 		
 		if(nomHopital == null & ville == null) return this.hopitalService.getAllSejourHospitalier();
-		throw new RuntimeException("Not Yet implemented !");
+		else if(nomHopital == null) return this.hopitalService.getSejourByVille(ville);
+		else if (ville == null) return this.hopitalService.getSejourByNameHopital(nomHopital);
+		else return this.hopitalService.getSejourByNameHopitalAndVille(nomHopital,ville);
 	}
 }
