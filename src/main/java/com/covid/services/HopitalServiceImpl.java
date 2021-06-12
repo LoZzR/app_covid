@@ -63,8 +63,19 @@ public class HopitalServiceImpl implements HopitalService{
 	}
 
 	@Override
+	public List<Hopital> getAllHopitalByVille(String ville) {
+		return this.hopitalRepo.findByVille(ville);
+	}
+
+	@Override
 	public List<Room> getAllRoom() {
 		return this.roomRepo.findAll();
+	}
+	
+
+	@Override
+	public List<Room> getAllRoomByHopitalNameAndVille(String hopitalName, String ville) {
+		return this.roomRepo.findRoomByHopiatlNameAndVille(hopitalName.toLowerCase(), ville.toLowerCase());
 	}
 
 	@Override

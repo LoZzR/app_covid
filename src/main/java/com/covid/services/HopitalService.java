@@ -18,12 +18,15 @@ public interface HopitalService {
 	public void deleteSejourHospitalier(SejourHospitalier sejourHospitalier);
 	
 	public List<Hopital> getAllHopital();
+	public List<Hopital> getAllHopitalByVille(String ville);
 	public List<Room> getAllRoom();
+	public List<Room> getAllRoomByHopitalNameAndVille(String hopitalName, String ville);
 	public List<SejourDTO> getAllSejourHospitalier();
 	public List<SejourDTO> getSejourByNameHopitalAndVille(String nomHopital, String ville);
 	
 	public Hopital getHopital(Integer id);
 	public Room getRoom(Integer id);
+	
 	public SejourHospitalier getSejourHospitalier(Integer id);
 	
 	public List<SejourDTO> getSejourByVille(String ville);

@@ -50,16 +50,6 @@ public class Patient {
 		
 	}
 
-	public Patient(String cin, LocalDate dateNaissance, String nom, String prenom, String tel,
-			String adresse) {
-		this.cin = cin;
-		this.dateNaissance = dateNaissance;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.tel = tel;
-		this.adresse = adresse;
-	}
-
 	public Patient(String cin, LocalDate dateNaissance, String nom, String prenom, String sexe, String tel,
 			String adresse) {
 		this.cin = cin;
