@@ -6,17 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.covid.entities.Hopital;
-import com.covid.entities.Patient;
 import com.covid.entities.Room;
 import com.covid.services.HopitalService;
-import com.covid.services.PatientService;
 import com.covid.services.dto.SejourDTO;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -25,9 +21,6 @@ public class HopitalController {
 
 	@Autowired
 	private HopitalService hopitalService;
-
-	@Autowired
-	private PatientService patientService;
 	
 	@GetMapping("/sejours")
 	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
@@ -51,11 +44,5 @@ public class HopitalController {
 	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	public List<Room> getAllRoomByHopital(@RequestParam(value = "hopital", required = true) String hopital, @RequestParam(value = "ville", required = true) String ville){
 		return this.hopitalService.getAllRoomByHopitalNameAndVille(hopital, ville);
-	}
-	
-	@PostMapping("/patients")
-	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-	public Patient addPatient(@RequestBody Patient patient) {
-		return this.patientService.addPatient(patient);
 	}
 }
